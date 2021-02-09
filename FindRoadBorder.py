@@ -66,6 +66,7 @@ def DrawLine(img,lines):
         left_history_flag = False
     except:
         left_history_flag=True
+        print("left lane miss",left_history_flag)
         left_border[0] = [0,0,0,0]
         pass
         # if len(history_left)<1:
@@ -90,6 +91,7 @@ def DrawLine(img,lines):
         right_history_flag=False
     except:
         right_history_flag=True
+        print("right lane miss",right_history_flag)
         right_border[0] = [0,0,0,0]
         pass
         # if len(history_right)<1:
@@ -100,7 +102,7 @@ def DrawLine(img,lines):
         #     right_border[0] = [x1,y1,x2,y2]
         #     cv.line(img,(x1,y1),(x2,y2),(0,0,255),6)
         
-    return (left_border,right_border,img)
+    return (left_border,right_border,img,left_history_flag,right_history_flag)
 
 def DetectLine(frame):
     height = frame.shape[0]
